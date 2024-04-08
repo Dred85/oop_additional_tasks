@@ -3,7 +3,7 @@
 
 - Исполнитель (artist) - строка
 - Название (title) - строка
-- Треки (tracks) - это **список**
+- Треки (tracks) - это список
 
 **Создай два экземпляра album_1 и album_2**
 
@@ -21,17 +21,23 @@
 """
 
 
-class ...:
+class Album:
+    artist: str
+    title: str
+    tracks: list
 
-    def ...:
-    ...
+    def __init__(self,artist, title, tracks):
+        self.artist = artist
+        self.title = title
+        self.tracks = tracks
 
 
-album_1 = Album(...)
 
-album_2 = ...
+album_1 = Album('Queen', "Killer Queen", ['Brighton rock', 'Killer Queen','Tenement Funster'])
+
+album_2 = Album('Metallica', "Black Album", ['Enter Sandman', 'Sad But True'])
 
 
 # код для проверки 
-print(album_1.artist, album_1.title, len(album_1.tracks), "треков")  # Queen Killer Queen 3 треков
-print(album_2.artist, album_2.title, len(album_2.tracks), "треков")  # Metallica Black Album 3 треков
+print(album_1.artist, album_1.title, len(album_1.tracks), "трека")  # Queen Killer Queen 3 трека
+print(album_2.artist, album_2.title, len(album_2.tracks), "трека")  # Metallica Black Album 3 трека
