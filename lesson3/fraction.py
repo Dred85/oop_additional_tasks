@@ -10,7 +10,18 @@
 
 
 class Fraction:
-    pass
+    def __init__(self, numenator, denominator):
+        self.numenator = numenator
+        self.denominator = denominator
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.numenator}, {self.denominator})"
+
+    def __str__(self):
+        return f"{self.numenator}/{self.denominator}"
+
+    def __add__(self, other):
+        return f"{self.numenator * other.denominator + other.numenator * self.denominator}/{self.denominator * other.denominator}"
 
 
 # код для проверки 
