@@ -21,6 +21,8 @@ class Rectangle:
     def perimeter(self):
         return (self.width + self.height) * 2
 
+    def display(self):
+        print(f'ширина: {self.width}, длина: {self.height}, площадь: {self.area()}, периметр: {self.perimeter()}')
     @classmethod
     def from_diagonal(cls, diagonal, aspect_ratio):
         width = round(diagonal / (1 + aspect_ratio ** 2) ** 0.5, 2)
@@ -34,14 +36,18 @@ class Rectangle:
 
 
 
+
 # код для проверки
 rectangle = Rectangle(4, 5)
+
+
+rectangle.display()
 print(rectangle.area())  # 20
 print(rectangle.perimeter())  # 18
 
 rectangle2 = Rectangle.from_diagonal(5, 2)
 print(rectangle2.area())  # 10.0128
 print(rectangle2.perimeter())  # 13.42
-#
+
 print(Rectangle.is_square(4, 4))  # True
 print(Rectangle.is_square(4, 5))  # False

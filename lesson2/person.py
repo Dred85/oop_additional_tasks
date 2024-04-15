@@ -29,9 +29,14 @@ class Person:
     def is_adult(age):
         return True if age > 18 else False
 
+    # def my_func():
+    #     print(f"Hello")
 
 
-# код для проверки 
+# Person.my_func()
+
+
+# код для проверки
 person1 = Person("John", 28)
 person1.display()  # John is 28 years old
 
