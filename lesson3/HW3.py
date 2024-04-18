@@ -36,9 +36,7 @@ class Category:
 
     def __str__(self):
 
-        # return f"{self.name}, количество продуктов: {sum([len(Product(**product)) for product in self.__products])} шт."
         return f"{self.name}, количество продуктов: {sum([len(product) for product in self.__products])} шт."
-
 
     def add_product(self, product):
         """
@@ -86,9 +84,8 @@ class Product:
         """
         Фабричный метод для создания нового товара
         """
-        name, description, price, quantity = product["name"], product["description"], product["price"], product[
-            "quantity"]
-        # name, description, price, quantity = product.values()
+
+        name, description, price, quantity = product.values()
 
         return cls(name, description, price, quantity)
 
@@ -149,52 +146,6 @@ data = [
     }
 ]
 
-# categories = []
-# for category in data:
-#     products = []
-#
-#     for product in category['products']:
-#         products.append(Product.new_product(product))
-#     category['products'] = products
-#     categories.append(Category(**category))
-
-# assert categories[0].products == '''Samsung Galaxy C23 Ultra, 180000.0 руб. Остаток: 5 шт.
-# Iphone 15, 210000.0 руб. Остаток: 8 шт.
-# Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.
-# '''
-
-# category1 = Category("Смартфоны",
-#         "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
-#     [
-#             {
-#                 "name": "Samsung Galaxy C23 Ultra",
-#                 "description": "256GB, Серый цвет, 200MP камера",
-#                 "price": 180000.0,
-#                 "quantity": 5
-#             },
-#             {
-#                 "name": "Iphone 15",
-#                 "description": "512GB, Gray space",
-#                 "price": 210000.0,
-#                 "quantity": 8
-#             },
-#             {
-#                 "name": "Xiaomi Redmi Note 11",
-#                 "description": "1024GB, Синий",
-#                 "price": 31000.0,
-#                 "quantity": 14
-#             }
-#         ])
-#
-# print(category1)
-
-# product1 = Product('Test', 'Test', 1000, 10)
-# product_item = Product('Test', 'Test', 2000, 20)
-#
-# print(product1 + product_item)
-# print(len(product_item))
-# product_item.price = -100
-# print(product_item.price)
 
 categories = []
 for category in data:
