@@ -85,8 +85,9 @@ class Product:
         """
         Фабричный метод для создания нового товара
         """
-        name, description, price, quantity = product["name"], product["description"], product["price"], product[
-            "quantity"]
+        # name, description, price, quantity = product["name"], product["description"], product["price"], product[
+            # "quantity"]
+        name, description, price, quantity = product.values()
 
         return cls(name, description, price, quantity)
 
@@ -190,9 +191,9 @@ print(category1)
 
 
 product1 = Product('Test', 'Test', 1000, 10)
-product2 = Product('Test', 'Test', 2000, 20)
+product_item = Product('Test', 'Test', 2000, 20)
 
-# print(product1 + product2)
-# print(len(product2))
-# # product_item.price = -100
-# print(product_item.price)
+print(product1 + product_item)
+print(len(product_item))
+product_item.price = -100
+print(product_item.price)
