@@ -23,7 +23,10 @@ class Timer:
         return self.elapsed_time
 
 with Timer() as timer:
-    sleep(2)
-    
+    # sleep(1)
+    with open("log.txt") as f:
+        for line in f.readlines():
+            print(line)
+        # print(f.read())
 
 print("Execution time:", timer.elapsed_time)
