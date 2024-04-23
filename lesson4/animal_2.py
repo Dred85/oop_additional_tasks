@@ -29,4 +29,4 @@ animals = [Dog('Dog1'), Dog('Dog2'), Cat('Cat1'), Dog('Dog3')]
 
 for animal in animals:
     # Должно выводиться Bark или Meow в зависимости от того какой класс
-    pass
+    animal.bark() if isinstance(animal, Dog) else animal.meow()
