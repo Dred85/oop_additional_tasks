@@ -19,12 +19,13 @@ class Category:
 
     def __str__(self):
         return f"{self.name}, количество продуктов: {sum([len(product) for product in self.__products])} шт."
+        # return f"{self.name}, количество продуктов: {sum([{self.name} for product in self.__products])} шт."
 
-    def add_product(self, product):
+    def add_product(self, product_):
         """
         Добавляет товар в категорию
         """
-        if isinstance(product, Product):
+        if isinstance(product_, Product):
             self.__products.append(product)
         else:
             raise TypeError('Можно добавить только объекты класса Product или его наследников (Smartphone/LawnGrass)')
@@ -34,16 +35,16 @@ class Category:
         """
         Возвращает список товаров в категории
         """
-
+        # return "".join(
+            # [f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n" for product in self.__products])
         return f"{self.__products}"
 
     @products.setter
     def products(self, products):
-        if isinstance(products, Product):
+        if issubclass(type(products), Product):
             self.__products = products
         else:
-            TypeError('Можно добавить только объекты класса Product или его наследников (Smartphone/LawnGrass)')
-            print('Можно добавить только объекты класса Product или его наследников (Smartphone/LawnGrass)')
+            raise TypeError('Можно добавить только объекты класса Product или его наследников (Smartphone/LawnGrass)')
 
 
 class Product:
@@ -68,7 +69,7 @@ class Product:
     def __add__(self, other):
         result = self.__price * self.quantity + other.__price * other.quantity
         if type(other) is not Product:
-            raise TypeError('')
+            raise TypeError('Ошибка сложения. Нельзя складывать не экземпляры одного класса')
         return result
 
     def __str__(self):
@@ -118,3 +119,70 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
+
+
+if __name__ == '__main__':
+    data = [
+        {
+            "name": "Смартфоны",
+            "description": "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
+            "products": [
+                {
+                    "name": "Samsung Galaxy C23 Ultra",
+                    "description": "256GB, Серый цвет, 200MP камера",
+                    "price": 180000.0,
+                    "quantity": 5
+                },
+                {
+                    "name": "Iphone 15",
+                    "description": "512GB, Gray space",
+                    "price": 210000.0,
+                    "quantity": 8
+                },
+                {
+                    "name": "Xiaomi Redmi Note 11",
+                    "description": "1024GB, Синий",
+                    "price": 31000.0,
+                    "quantity": 14
+                }
+            ]
+        },
+        {
+            "name": "Телевизоры",
+            "description": "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+            "products": [
+                {
+                    "name": "55 QLED 4K",
+                    "description": "Фоновая подсветка",
+                    "price": 123000.0,
+                    "quantity": 7
+                }
+            ]
+        }
+    ]
+
+    categories = []
+    for category in data:
+        products = []
+        for product in category['products']:
+            products.append(Product.new_product(product))
+        category['products'] = products
+        categories.append(Category(**category))
+
+    product_item = Product('Test', 'Test', 1000, 10)
+    product_item_2 = Smartphone('Test2', 'Test2', 2000, 10, 1.5, 'Xiaomi', 10000, 'red')
+    product_item_3 = LawnGrass('Test3', 'Test3', 3000, 10, 'Canada', '1 year', 'light green')
+
+    try:
+        categories[0].products = 1
+        # print(categories[0].products)
+        # print(categories[0])
+    except TypeError:
+        print('Можно добавить только объекты класса Product или его наследников (Smartphone/LawnGrass)')
+
+    categories[0].products = product_item
+
+    print(product_item.name in categories[0].products)
+    print(product_item.name)
+    print(type(categories[0]))
+    print(categories[0].products)

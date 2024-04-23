@@ -21,7 +21,6 @@ class Category:
         return f"{self.name}, количество продуктов: {sum([len(product) for product in self.__products])} шт."
         # return f"{self.name}, количество продуктов: {sum([{self.name} for product in self.__products])} шт."
 
-
     def add_product(self, product_):
         """
         Добавляет товар в категорию
@@ -36,17 +35,17 @@ class Category:
         """
         Возвращает список товаров в категории
         """
-
-        return f"{ self.__products}"
+        # return "".join(
             # [f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n" for product in self.__products])
-
+        return f"{self.__products}"
 
     @products.setter
     def products(self, products):
         if issubclass(type(products), Product):
             self.__products = products
         else:
-           TypeError('Можно добавить только объекты класса Product или его наследников (Smartphone/LawnGrass)')
+            raise TypeError('Можно добавить только объекты класса Product или его наследников (Smartphone/LawnGrass)')
+
 
 class Product:
     """
@@ -184,5 +183,6 @@ if __name__ == '__main__':
     categories[0].products = product_item
 
     print(product_item.name in categories[0].products)
-    # print(product_item.name)
-    # print(categories[0].products)
+    print(product_item.name)
+    print(type(categories[0]))
+    print(categories[0].products)
