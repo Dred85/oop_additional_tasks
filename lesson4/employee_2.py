@@ -15,8 +15,7 @@ class Employee:
             return self.pay + other
         elif isinstance(other, Employee):
             return self.pay + other.pay
-        # elif isinstance(other, Client):
-        #     return self.pay
+
         else:
             raise TypeError("Складывать можно только числа и экземпляры класса Employee")
 
@@ -28,8 +27,7 @@ class Client():
     def __add__(self, other):
         if isinstance(other, (int, float)):
             return other
-        # elif isinstance(other, Employee):
-        #     return self.pay
+
 
         else:
             raise TypeError("Складывать можно только числа и экземпляры класса Employee")
