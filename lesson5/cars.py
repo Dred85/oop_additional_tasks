@@ -11,6 +11,8 @@
 в котором происходи получение, присваивание и удаление значения.
 """
 
+import timeit
+
 
 class Car:
     def __init__(self, brand, model, age):
@@ -37,10 +39,9 @@ class CarSlots:
         del self.age
         self.age = 10
 
+
 car = Car('Toyota', 'Corolla', 2022)
 car_slots = Car('Toyota', 'Crown', 1990)
-
-import timeit
 
 t1 = timeit.timeit(car.get_set_del)
 t2 = timeit.timeit(car_slots.get_set_del)
