@@ -28,6 +28,5 @@ class Student:
 student = Student('Ivan', 'Python', [5, 4, 5, 5])
 print(student.avg_rate())
 
-
 student = Student('Ivan', 'Python', [])
 print(student.avg_rate())
