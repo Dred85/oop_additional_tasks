@@ -15,14 +15,23 @@
 
 
 class Employee:
-    pass
+    def __init__(self, name, age , pay):
+        self.name = name
+        if 18 <= age <= 127:
+            self.age = age
+        else:
+            raise ValueError("Возраст должен быть не меньше 18 и не больше 127")
+        if pay < 16242:
+            raise ValueError("Оплата труда не может быть меньше 16242")
+        else:
+            self.pay = pay
 
 
 # код для проверки
 employee = Employee('John', 30, 5000)
 # raises ValueError('Оплата труда не может быть меньше 16242')
 
-employee = Employee("Jane", 17, 50000)
+# employee = Employee("Jane", 17, 50000)
 # raises ValueError('Возраст должен быть не меньше 18 и не больше 127')
 
 employee = Employee("Kate", 175, 50000)
